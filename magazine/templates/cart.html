@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h3 class = 'text-center'>Ваша корзина</h3>
+<table width="100%" border="0" cellpadding="4">
+<tr>
+    <td calss = 'text-center'><strong>Товар </strong></td>
+    <td calss = 'text-center'><strong>Кол-во </strong>
+    <td calss = 'text-center'><strong>Цена </strong></td>
+    <td calss = 'text-center'></td>
+</tr>
+{% for item in cart.items.all %}
+    <tr>
+    <td calss = 'text-center'>{{ item.product.title }}</td>
+    <td calss = 'text-center'> {{ item.qty }}</td>
+    <td calss = 'text-center'>{{ item.item_total }}</td>
+    <td calss = 'text-center'><a href='{% url "remove_from_cart" product_slug=item.product.slug %}'><button class = 'btn btn-default'>Удалить из корзины </button></a> </td>
+    </tr>
+{% endfor %}
+</table>
+{% endblock %}

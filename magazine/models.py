@@ -63,7 +63,7 @@ class Product(models.Model):
 
 
 class CartItem(models.Model):
-    poduct = models.ForeignKey('Product', on_delete=models.PROTECT)
+    product = models.ForeignKey('Product', on_delete=models.PROTECT)
     qty =models.PositiveIntegerField(default=1)
     item_total = models.DecimalField(max_digits=9, decimal_places=2, default=0.00)
 
@@ -72,6 +72,19 @@ class CartItem(models.Model):
 
 
 
-class Cart
+class Cart(models.Model):
+
+    items = models.ManyToManyField(CartItem, blank=True)
+    cart_total = models.DecimalField(max_digits=9, decimal_places=2, default=0.00)
+
+
+    def add_to_cart(self, product):
+        return
+
+    def remove_from_cart(self, product):
+        return
+
+    def __str__(self):
+        return str(self.id)
 
 

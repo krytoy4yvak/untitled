@@ -6,9 +6,9 @@
     <div class ="col-sm-8">
     <h3 calss = 'text-center'>{{ product.title }}</h3>
     <p>{% lorem %}</p>
-    <p>{% lorem %}</p
+    <p>{% lorem %}</p>
         <hr>
         <p style='font-size: 25px'>Цена: <strong>{{ product.price }}</strong></p>
-    <a herf ='#'><button class = 'btn btn-danger'>Добавить в корзину</button></a>
+    <a href ='{% url "add_to_cart" product_slug=product.slug %}'><button class = 'btn btn-danger'>Добавить в корзину</button></a>
     </div>
 {% endblock content %}
