@@ -78,10 +78,22 @@ class Cart(models.Model):
     cart_total = models.DecimalField(max_digits=9, decimal_places=2, default=0.00)
 
 
-    def add_to_cart(self, product):
+    def add_to_cart(self, product_slug):
+        cart = self
+        product = Product.objects.get(slug=product_slug)
+        new_item, _ = CartItem.objects.get_or_create(product=product, item_total=product.price)
+        if new_item not in cart.items.all():
+            cart.items.add(new_item)
+            cart.save()
         return
 
-    def remove_from_cart(self, product):
+    def remove_from_cart(self, product_slug):
+        cart = self
+        product = Product.objects.get(slug=product_slug)
+        for cart_item in cart.items.all():
+            if cart_item.product == product:
+                cart.items.remove(cart_item)
+                cart.save()
         return
 
     def __str__(self):

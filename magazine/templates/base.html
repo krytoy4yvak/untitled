@@ -55,7 +55,7 @@
                     </li>
                 </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href ='{% url "cart" %}'>Корзина <span class ='badge'>{{ cart.items.count }}</span></a></li>
+                <li><a href='{% url "cart" %}'>Корзина <span class='badge' id='cart_count'>{{ cart.items.count }}</span></a></li>
             </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -89,13 +89,13 @@
                                 <div class="item active">
                                     <img class="slide-image" src="{{ product.image.url }}" alt="" style = 'padding-left: 150px; height: 300px'>
                                     <br>
-                                <p class ='text-center'><a href = '{{ product.get_absolute_url }}'><button class = 'btn btn-primary'>{{ product.title }}</button></a></p>
+                                <p class='text-center'><a href='{{ product.get_absolute_url }}'><button class='btn btn-primary'>{{ product.title }}</button></a></p>
                                 </div>
                                     {% else %}
                                 <div class="item">
                                     <img class="slide-image" src="{{ product.image.url }}" alt="" style = 'padding-left: 150px; height: 300px'>
                                     <br>
-                                <p class ='text-center'><a href = '{{ product.get_absolute_url }}'><button class = 'btn btn-primary'>{{ product.title }}</button></a></p>
+                                <p class='text-center'><a href='{{ product.get_absolute_url }}'><button class='btn btn-primary'>{{ product.title }}</button></a></p>
                                 </div>
                                    {% endif %}
                                 {% endfor %}
@@ -160,7 +160,6 @@
     <script src= '{% static "js/bootstrap.min.js" %}'></script>
 
     <!-- Bootstrap Core JavaScript -->
-
 
 </body>
 
