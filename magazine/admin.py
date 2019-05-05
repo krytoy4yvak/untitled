@@ -1,11 +1,18 @@
 from django.contrib import admin
 from magazine.models import Category, Brand, Product, CartItem, Cart, Order
 
+def make_payed(modeladmin, request, queryset):
+    queryset.update(status='Оплачен')
+make_payed.short_description = "Пометить как оплаченные"
+
+class OrderAdmin(admin.ModelAdmin):
+	list_filter = ['status']
+	actions = [make_payed]
 
 admin.site.register(Category)
 admin.site.register(Brand)
 admin.site.register(Product)
-admin.site.register(Order)
+admin.site.register(Order,OrderAdmin)
 admin.site.register(CartItem)
 admin.site.register(Cart)
 # Register your models here.
